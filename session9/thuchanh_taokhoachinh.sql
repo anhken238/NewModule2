@@ -19,3 +19,4 @@ CREATE TABLE userroles(
    FOREIGN KEY(user_id) REFERENCES users(user_id),
    FOREIGN KEY(role_id) REFERENCES roles(role_id)
 );
+-- tạo khóa chính khi thay đổi bảng hoặc bổ sung khóa chính sau khi đã tạo bảng contact
