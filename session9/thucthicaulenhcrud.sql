@@ -40,7 +40,7 @@ insert into customers (customerNumber, customerName, contactfirstName, contactla
 values (1, 'AgileLead', 'Lan', 'Trần', '0978822683', 'Hàm Nghi', 'Hà Nội', 'Việt Nam' );
 
 update customers 
-set customername = 'Baane Mini Imports'
+set customername = 'Baane Mini Imports'orders
 where customernumber = 103;
 
 DELETE FROM customers
