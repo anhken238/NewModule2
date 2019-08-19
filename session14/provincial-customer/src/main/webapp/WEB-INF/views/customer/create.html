@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create customer</title>
+</head>
+<body>
+    <h1>Create customer</h1>
+    <p>
+        <a href="/customers">Customer list</a>
+    </p>
+    <th:block th:if="${message}">
+        <p th:text="${message}"></p>
+    </th:block>
+    <form th:action="@{/create-customer}" th:object="${customer}" method="post">
+        <table>
+            <tr>
+                <td>First name:</td>
+                <td>
+                    <input id="firstName" type="text" th:field="*{firstName}"/><br>
+<!--                    <span id = "result1"></span>-->
+                </td>
+
+            </tr>
+            <tr>
+                <td>Last name:</td>
+                <td>
+                    <input  id="lastName" type="text" th:field="*{lastName}"/><br>
+<!--                    <span id="result2"></span>-->
+
+                </td>
+            </tr>
+            <tr>
+                <td>Province:</td>
+                <td>
+                    <select th:field="*{province}">
+                        <option th:each="p : ${provinces}" th:value="${p.id}" th:text="${p.name}"></option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Create customer"></td>
+            </tr>
+        </table>
+    </form>
+<!--    <script>-->
+<!--        var first = document.getElementById("firstName").value;-->
+<!--        var last = document.getElementById("lastName").value;-->
+<!--        if(first == null) document.getElementById("result1").innerHTML = "not null !"-->
+<!--        if(last == null) document.getElementById("result2").innerHTML = "not null !"-->
+<!--    </script>-->
+</body>
+</html>

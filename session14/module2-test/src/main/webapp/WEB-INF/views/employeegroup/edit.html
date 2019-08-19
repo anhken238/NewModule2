@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<form th:action="@{/edit-employeegroup}" th:object="${employeegroup}" method="post">
+    <table>
+        <tr>
+            <td><input type="hidden" th:field="*{id}"></td>
+        </tr>
+        <tr>
+            <td>Name:</td>
+            <td><input type="text" th:field="*{nameEmployeeGroup}"/></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Edit employeegroup"></td>
+        </tr>
+    </table>
+</body>
+</html>

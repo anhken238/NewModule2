@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Web_Design</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700,800" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css">
+
+    <link rel="stylesheet" th:href="@{/resource/home/css/aos.css}">
+
+    <link rel="stylesheet" th:href="@{/resource/home/css/style.css}">
+    <style>
+        th,tr,td{
+            border: 2px solid slateblue;
+        }
+        td{
+            padding: 5px;
+        }
+    </style>
+</head>
+
+
+<header class="fixed-top p-auto">
+    <div class="container">
+        <nav class="navbar navbar-expand p-0">
+            <a class="navbar-brand mr-0 pr-4" href="/home">
+                <i class="fa fa-heart"></i>
+            </a>
+            <a href="javascript:void(0)" id="cls-btn">&times;</a>
+            <div class="navbar-collapse nav-sec" id="sidenav">
+                <ul class="navbar-nav mr-auto header-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link active text-white" href="/home">
+                            Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="/category">
+                            Category
+                        </a>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="blog.html">
+                            Login/Register
+                        </a>
+                    </li>
+
+<!--                    <li class="nav-item">-->
+<!--                        <a class="nav-link text-white" href="portfolio.html">-->
+<!--                            Portfolio-->
+<!--                        </a>-->
+<!--                    </li>-->
+
+<!--                    <li class="nav-item">-->
+<!--                        <a class="nav-link text-white" href="contact.html">-->
+<!--                            Contact-->
+<!--                        </a>-->
+<!--                    </li>-->
+
+                </ul>
+                <form>
+                <div class="search-box mr-lg-0">
+
+                    <input type="text" placeholder="Search here..." name="s">
+                    <button type="submit"><i class="fa fa-search"></i></button>
+
+                </div>
+                </form>
+                <div class="menu-icon d-lg-none">
+                    <span class="ml-auto"></span>
+                    <span class="ml-auto"></span>
+                    <span class="ml-auto"></span>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<section class="banner">
+    <div class="container" data-aos="fade-up" data-aos-duration="1000">
+        <div>
+
+            <h4 style="color:maroon">Notes</h4>
+            <p><a href="/create-note" class="get-started-btn">Create New Note</a></p>
+<!--                <form>-->
+<!--                    Search by first name:-->
+<!--                    <input name="s" type="text"/>-->
+<!--                    <input type="submit"  value="Search"/>-->
+<!--                </form>-->
+            <br/>
+            <table border="1">
+                <thead>
+                <tr style="background-color: black; color: white;">
+                    <th>Name note</th>
+                    <th>Content</th>
+                    <th>date Create</th>
+                    <th>Last modified Date</th>
+                    <th>Category</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+                </thead>
+                <th:block th:each="note : ${notes}">
+                    <tr>
+                        <td th:text="${note.nameNote}"></td>
+                        <td th:text="${note.content}"></td>
+                        <td th:text="${note.dateCreate}"></td>
+                        <td th:text="${note.lastModifiedDate}"></td>
+                        <td th:text="${note.category.nameCategory}"></td>
+                        <td><a th:href="@{/edit-note/__${note.id}__ }">Edit</a></td>
+                        <td><a th:href="@{/delete-note/__${note.id}__ }">Delete</a></td>
+                    </tr>
+                </th:block>
+            </table>
+            <div>
+                <a th:href="@{'/home'(page=${notes.number - 1})}" th:if="${notes.hasPrevious()}">Previous</a>
+                <span th:text="${notes.number + 1}"></span>/<span th:text="${notes.totalPages}"></span>
+                <a th:href="@{'/home'(page=${notes.number + 1})}" th:if="${notes.hasNext()}">Next</a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<footer>
+    <div class="layer">
+        <div class="container">
+            <nav class="navbar navbar-expand  p-0">
+                <a class="navbar-brand mr-0 pr-2 pr-sm-4" href="index.html">
+                    <i class="fa fa-heart">CodeGym</i>
+                </a>
+                <div class="nav-sec">
+                    <ul class="ml-md-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link active text-black" href="index.html">
+                                Home
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.html">
+                                About Us
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="services.html">
+                                Services
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="portfolio.html">
+                                Portfolio
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html">
+                                Contact
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="support.html">
+                                Support
+                            </a>
+                        </li>
+                        <li>
+                            <p class="m-0"> ©2018, All Rights Reserved. Designed <i class="fa fa-heart"></i>  By Admin</a></p>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+</footer>
+
+
+<button class="scrolltop-btn">
+    <i class="fa fa-angle-up"></i>
+</button>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.js"></script>
+<script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
+
+<script th:src="@{resource/home/js/script.js}"></script>
+
+
+</body>
+
+</html>

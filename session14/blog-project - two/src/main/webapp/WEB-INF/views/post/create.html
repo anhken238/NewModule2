@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create post</title>
+</head>
+<body>
+<h1>Create post</h1>
+<p>
+    <a href="/posts">Posts list</a>
+</p>
+<th:block th:if="${message}">
+    <p style="color: green" th:text="${message}"></p>
+</th:block>
+<form th:action="@{/create-post}" th:object="${create}" method="post" >
+    <table>
+        <tr>
+            <td>Title:</td>
+            <td><input type="text"  th:field="*{title}"/></td>
+        </tr>
+        <tr>
+            <td>Post Name:</td>
+            <td><input type="text" th:field="*{post}"/></td>
+        </tr>
+        <tr>
+            <td>Introduce</td>
+            <td><input type="text" th:field="*{introduce}"/></td>
+        </tr>
+        <tr>
+            <td>Content:</td>
+            <td><input type="text" th:field="*{content}"/></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Create Post"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

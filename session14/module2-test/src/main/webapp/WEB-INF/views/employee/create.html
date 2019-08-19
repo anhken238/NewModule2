@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<form action="" th:action="@{/create-employee}" method="post" th:object="${employee}">
+    <table>
+        <tr>
+            <td>Ma Nhan vien</td>
+            <td><input th:field="*{id}"></td>
+        </tr>
+        <tr>
+            <td>Ten Nhan Vien</td>
+            <td><input th:field="*{name}"></td>
+        </tr>
+
+        <tr>
+            <td>Ngay Sinh</td>
+            <td><input th:field="*{dateOfBirth}"></td>
+        </tr>
+        <tr>
+            <td>Gioi Tinh</td>
+            <td><input th:field="*{sex}"></td>
+        </tr>
+        <tr>
+            <td>So Dien Thoai</td>
+            <td><input th:field="*{phone}"></td>
+        </tr>
+        <tr>
+            <td>So CMND</td>
+            <td><input th:field="*{identityCard}"></td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td><input th:field="*{email}"></td>
+        </tr>
+        <tr>
+            <td>Dia Chi</td>
+            <td><input th:field="*{address}"></td>
+        </tr>
+        <tr>
+            <td>Nhom Nhan Vien:</td>
+            <td>
+                <select th:field="*{employeeGroup}">
+                    <option th:each="p : ${employees}" th:value="${p.id}" th:text="${p.nameEmployeeGroup}"></option>
+                </select>
+            </td>
+        </tr>
+    </table>
+    <input type="submit" value="Create employee">
+</form>
+</body>
+</html>
